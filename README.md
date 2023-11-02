@@ -1,5 +1,5 @@
 # Chat-App - Chat Application 
-It is simple chat application build with the power of MERN Stack.
+It is a simple chat application built with the power of MERN Stack.
 
 
 ## Installation Guide
@@ -8,7 +8,7 @@ It is simple chat application build with the power of MERN Stack.
 - [Nodejs](https://nodejs.org/en/download)
 - [Mongodb](https://www.mongodb.com/docs/manual/administration/install-community/)
 
-Both should be installed and make sure mongodb is running.
+Both should be installed and make sure MongoDB is running.
 
 ```shell
 git clone git@github.com:devangmittal/Chat-app.git
@@ -30,7 +30,7 @@ cd Front
 npm install
 
 ```
-We are almost done, Now just start the development server.
+We are almost done, Now start the development server.
 
 For Frontend.
 ```shell
@@ -39,10 +39,10 @@ npm start
 ```
 For Backend.
 
-Open another terminal in folder, Also make sure mongodb is running in background.
+Open another terminal in a folder, Also make sure MongoDB is running in the background.
 ```shell
 cd Back
 npm start OR nodemon index.js
 ```
 
-Done! Now open localhost:3000 in your browser.
+Done! Now open localhost:3000 in your browser, and register at least 2 new users.
