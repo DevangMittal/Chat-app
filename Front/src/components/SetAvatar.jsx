@@ -7,8 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/APIRoutes";
-export default function SetAvatar()
-{
+export default function SetAvatar() {
 	const api = `https://api.dicebear.com/7.x/avataaars/svg`;
 	const navigate = useNavigate();
 	const [avatars, setAvatars] = useState([]);
@@ -22,14 +21,15 @@ export default function SetAvatar()
 		theme: "dark",
 	};
 
-	useEffect(async () =>
-	{
-		if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
-			navigate("/login");
-	}, []);
+	useEffect(() => {
+		const checkAuth = async () => {
+			if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
+				navigate("/login");
+		};
+		checkAuth();
+	}, [navigate]);
 
-	const setProfilePicture = async () =>
-	{
+	const setProfilePicture = async () => {
 		if (selectedAvatar === undefined) {
 			toast.error("Please select an avatar", toastOptions);
 		} else {
@@ -55,19 +55,21 @@ export default function SetAvatar()
 		}
 	};
 
-	useEffect(async () =>
-	{
-		const data = [];
-		for (let i = 0; i < 4; i++) {
-			const image = await axios.get(
-				`${api}?seed=${Math.round(Math.random() * 1000)}`
-			);
-			const buffer = new Buffer(image.data);
-			data.push(buffer.toString("base64"));
-		}
-		setAvatars(data);
-		setIsLoading(false);
-	}, []);
+	useEffect(() => {
+		const fetchAvatars = async () => {
+			const data = [];
+			for (let i = 0; i < 4; i++) {
+				const image = await axios.get(
+					`${api}?seed=${Math.round(Math.random() * 1000)}`
+				);
+				const buffer = new Buffer(image.data);
+				data.push(buffer.toString("base64"));
+			}
+			setAvatars(data);
+			setIsLoading(false);
+		};
+		fetchAvatars();
+	}, [api]);
 	return (
 		<>
 			{isLoading ? (
@@ -80,8 +82,7 @@ export default function SetAvatar()
 						<h1>Pick an Avatar as your profile picture</h1>
 					</div>
 					<div className="avatars">
-						{avatars.map((avatar, index) =>
-						{
+						{avatars.map((avatar, index) => {
 							return (
 								<div
 									className={`avatar ${selectedAvatar === index ? "selected" : ""

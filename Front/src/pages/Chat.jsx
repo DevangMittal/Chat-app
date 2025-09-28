@@ -15,18 +15,22 @@ export default function Chat()
 	const [contacts, setContacts] = useState([]);
 	const [currentChat, setCurrentChat] = useState(undefined);
 	const [currentUser, setCurrentUser] = useState(undefined);
-	useEffect(async () =>
+	useEffect(() =>
 	{
-		if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-			navigate("/login");
-		} else {
-			setCurrentUser(
-				await JSON.parse(
-					localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-				)
-			);
-		}
-	}, []);
+		const checkUser = async () =>
+		{
+			if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+				navigate("/login");
+			} else {
+				setCurrentUser(
+					await JSON.parse(
+						localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+					)
+				);
+			}
+		};
+		checkUser();
+	}, [navigate]);
 	useEffect(() =>
 	{
 		if (currentUser) {
@@ -35,17 +39,21 @@ export default function Chat()
 		}
 	}, [currentUser]);
 
-	useEffect(async () =>
+	useEffect(() =>
 	{
-		if (currentUser) {
-			if (currentUser.isAvatarImageSet) {
-				const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
-				setContacts(data.data);
-			} else {
-				navigate("/setAvatar");
+		const fetchContacts = async () =>
+		{
+			if (currentUser) {
+				if (currentUser.isAvatarImageSet) {
+					const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+					setContacts(data.data);
+				} else {
+					navigate("/setAvatar");
+				}
 			}
-		}
-	}, [currentUser]);
+		};
+		fetchContacts();
+	}, [currentUser, navigate]);
 	const handleChatChange = (chat) =>
 	{
 		setCurrentChat(chat);
