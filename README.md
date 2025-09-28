@@ -58,6 +58,8 @@ cd Chat-app
 ```
 
 ### 2. Environment Setup
+
+**Backend Environment Variables:**
 Navigate to the Back directory and set up environment variables:
 ```bash
 cd Back
@@ -65,11 +67,35 @@ cd Back
 touch .env
 ```
 
-Add the following to your `.env` file:
+Add the following to your Backend `.env` file:
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/chat-app
 JWT_SECRET=your_jwt_secret_key
+```
+
+**Frontend Environment Variables:**
+Navigate to the Front directory and set up environment variables:
+```bash
+cd Front
+# Create .env file
+touch .env
+```
+
+Add the following to your Frontend `.env` file:
+```env
+REACT_APP_BACKEND_URL=http://localhost:5000
+```
+
+**For Production Deployment:**
+```env
+# Frontend .env for production
+REACT_APP_BACKEND_URL=https://your-backend-api-url.com
+
+# Backend .env for production
+PORT=5000
+MONGODB_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_production_jwt_secret_key
 ```
 
 ### 3. Install Dependencies
@@ -143,7 +169,7 @@ Chat-app/
 ## 🚀 Deployment
 
 The application is deployed on Vercel and can be accessed at:
-[chat-app-teal-beta.vercel.app](https://chat-app-teal-beta.vercel.app/)
+[chat-app-teal-beta.vercel.app](https://chat-app-teal-beta.vercel.app)
 
 ### Deploy to Vercel
 1. Push your code to GitHub
