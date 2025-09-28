@@ -12,14 +12,16 @@ const corsOptions = {
 	origin: function (origin, callback) {
 		// Allow requests with no origin (mobile apps, Postman, etc.)
 		if (!origin) return callback(null, true);
-		
+
 		const allowedOrigins = [
 			process.env.FRONTEND_URL || "http://localhost:3000",
 			"https://chat-app-teal-beta.vercel.app",
 			"https://chat-app-teal-beta.vercel.app/",
+			"https://chat-app-git-main-devang-mittals-projects.vercel.app",
+			"https://chat-app-git-main-devang-mittals-projects.vercel.app/",
 			"http://localhost:3000"
 		];
-		
+
 		if (allowedOrigins.includes(origin)) {
 			callback(null, true);
 		} else {
@@ -36,12 +38,10 @@ mongoose
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
-	.then(() =>
-	{
+	.then(() => {
 		console.log("DB Connetion Successfull");
 	})
-	.catch((err) =>
-	{
+	.catch((err) => {
 		console.log(err.message);
 	});
 
@@ -63,6 +63,8 @@ const io = socket(server, {
 			process.env.FRONTEND_URL || "http://localhost:3000",
 			"https://chat-app-teal-beta.vercel.app",
 			"https://chat-app-teal-beta.vercel.app/",
+			"https://chat-app-git-main-devang-mittals-projects.vercel.app",
+			"https://chat-app-git-main-devang-mittals-projects.vercel.app/",
 			"http://localhost:3000"
 		],
 		credentials: true,
@@ -70,16 +72,13 @@ const io = socket(server, {
 });
 
 global.onlineUsers = new Map();
-io.on("connection", (socket) =>
-{
+io.on("connection", (socket) => {
 	global.chatSocket = socket;
-	socket.on("add-user", (userId) =>
-	{
+	socket.on("add-user", (userId) => {
 		onlineUsers.set(userId, socket.id);
 	});
 
-	socket.on("send-msg", (data) =>
-	{
+	socket.on("send-msg", (data) => {
 		const sendUserSocket = onlineUsers.get(data.to);
 		if (sendUserSocket) {
 			socket.to(sendUserSocket).emit("msg-recieve", data.msg);
