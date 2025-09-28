@@ -2,7 +2,7 @@
 
 A modern, real-time chat application built with the MERN stack, featuring instant messaging, user authentication, and a beautiful user interface.
 
-![Chat App Demo](https://img.shields.io/badge/Live%20Demo-chat--app--ashen--zeta.vercel.app-blue)
+![Chat App Demo](https://img.shields.io/badge/Live%20Demo-chat--app--teal--beta.vercel.app-blue)
 ![GitHub stars](https://img.shields.io/github/stars/DevangMittal/Chat-app)
 ![GitHub forks](https://img.shields.io/github/forks/DevangMittal/Chat-app)
 ![GitHub license](https://img.shields.io/github/license/DevangMittal/Chat-app)
@@ -40,7 +40,7 @@ A modern, real-time chat application built with the MERN stack, featuring instan
 
 ## 🚀 Live Demo
 
-Experience the app live at: [chat-app-ashen-zeta.vercel.app](https://chat-app-teal-beta.vercel.app/)
+Experience the app live at: [chat-app-teal-beta.vercel.app](https://chat-app-teal-beta.vercel.app)
 
 ## 📋 Prerequisites
 
@@ -143,7 +143,7 @@ Chat-app/
 ## 🚀 Deployment
 
 The application is deployed on Vercel and can be accessed at:
-[chat-app-ashen-zeta.vercel.app](https://chat-app-ashen-zeta.vercel.app)
+[chat-app-teal-beta.vercel.app](https://chat-app-teal-beta.vercel.app)
 
 ### Deploy to Vercel
 1. Push your code to GitHub
