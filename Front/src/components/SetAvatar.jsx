@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/APIRoutes";
 export default function SetAvatar()
 {
-	const api = `https://api.multiavatar.com/4645646`;
+	const api = `https://api.dicebear.com/7.x/avataaars/svg`;
 	const navigate = useNavigate();
 	const [avatars, setAvatars] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +60,7 @@ export default function SetAvatar()
 		const data = [];
 		for (let i = 0; i < 4; i++) {
 			const image = await axios.get(
-				`${api}/${Math.round(Math.random() * 1000)}`
+				`${api}?seed=${Math.round(Math.random() * 1000)}`
 			);
 			const buffer = new Buffer(image.data);
 			data.push(buffer.toString("base64"));
