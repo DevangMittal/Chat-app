@@ -143,7 +143,7 @@ Chat-app/
 ## 🚀 Deployment
 
 The application is deployed on Vercel and can be accessed at:
-[chat-app-teal-beta.vercel.app](https://chat-app-teal-beta.vercel.app)
+[chat-app-teal-beta.vercel.app](https://chat-app-teal-beta.vercel.app/)
 
 ### Deploy to Vercel
 1. Push your code to GitHub
