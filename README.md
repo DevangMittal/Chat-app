@@ -40,7 +40,7 @@ A modern, real-time chat application built with the MERN stack, featuring instan
 
 ## 🚀 Live Demo
 
-Experience the app live at: [chat-app-ashen-zeta.vercel.app](https://chat-app-ashen-zeta.vercel.app)
+Experience the app live at: [chat-app-ashen-zeta.vercel.app](https://chat-app-teal-beta.vercel.app/)
 
 ## 📋 Prerequisites
 
