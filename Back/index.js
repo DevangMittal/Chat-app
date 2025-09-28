@@ -9,7 +9,23 @@ require("dotenv").config();
 
 // CORS configuration for production
 const corsOptions = {
-	origin: process.env.FRONTEND_URL || "http://localhost:3000",
+	origin: function (origin, callback) {
+		// Allow requests with no origin (mobile apps, Postman, etc.)
+		if (!origin) return callback(null, true);
+		
+		const allowedOrigins = [
+			process.env.FRONTEND_URL || "http://localhost:3000",
+			"https://chat-app-teal-beta.vercel.app",
+			"https://chat-app-teal-beta.vercel.app/",
+			"http://localhost:3000"
+		];
+		
+		if (allowedOrigins.includes(origin)) {
+			callback(null, true);
+		} else {
+			callback(new Error('Not allowed by CORS'));
+		}
+	},
 	credentials: true,
 };
 app.use(cors(corsOptions));
@@ -43,7 +59,12 @@ const server = app.listen(PORT, () =>
 );
 const io = socket(server, {
 	cors: {
-		origin: process.env.FRONTEND_URL || "http://localhost:3000",
+		origin: [
+			process.env.FRONTEND_URL || "http://localhost:3000",
+			"https://chat-app-teal-beta.vercel.app",
+			"https://chat-app-teal-beta.vercel.app/",
+			"http://localhost:3000"
+		],
 		credentials: true,
 	},
 });
